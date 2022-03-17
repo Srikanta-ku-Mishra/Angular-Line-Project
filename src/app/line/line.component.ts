@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Aqua, Green, Red } from 'src/Constants/ColorConstant/ColorConstant';
 import { CubePoints } from 'src/Constants/points/CubePoints';
+import { ExtrudePoints } from 'src/Constants/points/ExtrudePoints';
 import { LinePoints } from 'src/Constants/points/LinePoints';
+// import { Extrude } from 'src/Helpers/ExtrudeHelper';
 import * as THREE from 'three';
 import { Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -38,7 +40,7 @@ export class LineComponent implements OnInit, AfterViewInit {
   @Input('farClipping') public farClippingPlane: number = 1000;
   //#endregion
 
-  //#region line Method 1(By putting coordinates in the class)
+  //#region line Method 1(By putting coordinates in the class :-> Normal Method)
   private line1() {
     // const controls = new OrbitControls(this.camera , this.renderer.domElement)
     const linematerial = new THREE.LineBasicMaterial({ color: Green })
@@ -195,6 +197,105 @@ export class LineComponent implements OnInit, AfterViewInit {
   }
   //#endregion
 
+  //#region Extrude Geometry
+  //Normal Method
+  private extrudeshape1() {
+    const shape = new THREE.Shape();
+    shape.moveTo(-2.5, -0.3);
+    shape.lineTo(-2.5, 1.3);
+    const extrudeSettings = {
+      steps: 2,
+      depth: 0.4,
+      bevelEnabled: false,
+      bevelThickness: 0.2,
+      bevelSize: 0.1,
+      bevelOffset: 0,
+      bevelSegments: 1
+    };
+    const linematerial = new THREE.MeshBasicMaterial({ color: Aqua })
+    const geometry2 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings);
+    const mesh = new THREE.Mesh(geometry2, linematerial);
+    return mesh;
+  }
+  //By Fetching Points from ExtrudePoints
+  private extrudeshape2() {
+    const point = ExtrudePoints;
+    var new2: number[] = [];
+    point.forEach(point => {
+      new2.push(point.lineX1.point1.x, point.lineX1.point1.y);
+      new2.push(point.lineX1.point2.x, point.lineX1.point2.y);
+    });
+    console.log("new2", new2)
+    const shape = new THREE.Shape();
+    shape.moveTo(new2[0], new2[1]);
+    shape.lineTo(new2[2], new2[3]);
+    const extrudeSettings = {
+      steps: 2,
+      depth: 0.4,
+      bevelEnabled: false,
+      bevelThickness: 0.2,
+      bevelSize: 0.1,
+      bevelOffset: 0,
+      bevelSegments: 1
+    };
+    const linematerial = new THREE.MeshBasicMaterial({ color: Green })
+    const geometry2 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings);
+    const mesh = new THREE.Mesh(geometry2, linematerial);
+    return mesh;
+  }
+  private extrudeshape3() {
+    const point = ExtrudePoints;
+    var new2: number[] = [];
+    point.forEach(point => {
+      new2.push(point.lineX2.point1.x, point.lineX2.point1.y);
+      new2.push(point.lineX2.point2.x, point.lineX2.point2.y);
+    });
+    console.log("new2", new2)
+    const shape = new THREE.Shape();
+    shape.moveTo(new2[0], new2[1]);
+    shape.lineTo(new2[2], new2[3]);
+    const extrudeSettings = {
+      steps: 2,
+      depth: 0.4,
+      bevelEnabled: false,
+      bevelThickness: 0.2,
+      bevelSize: 0.1,
+      bevelOffset: 0,
+      bevelSegments: 1
+    };
+    const linematerial = new THREE.MeshBasicMaterial({ color: Aqua })
+    const geometry2 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings);
+    const mesh = new THREE.Mesh(geometry2, linematerial);
+    return mesh;
+  }
+  private extrudeshape4() {
+    const point = ExtrudePoints;
+    var new2: number[] = [];
+    point.forEach(point => {
+      new2.push(point.lineX3.point1.x, point.lineX3.point1.y);
+      new2.push(point.lineX3.point2.x, point.lineX3.point2.y);
+    });
+    console.log("new2", new2)
+    const shape = new THREE.Shape();
+    shape.moveTo(new2[0], new2[1]);
+    shape.lineTo(new2[2], new2[3]);
+    const extrudeSettings = {
+      steps: 2,
+      depth: 0.4,
+      bevelEnabled: false,
+      bevelThickness: 0.2,
+      bevelSize: 0.1,
+      bevelOffset: 0,
+      bevelSegments: 1
+    };
+    const linematerial = new THREE.MeshBasicMaterial({ color: Green })
+    const geometry2 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings);
+    const mesh = new THREE.Mesh(geometry2, linematerial);
+    return mesh;
+  }
+
+  //#endregion
+
   //#region Drawing cube(By taking width, length and height values from CubeHelper)
   // Fetching Cube data from Cubepoints
   private cube() {
@@ -278,10 +379,16 @@ export class LineComponent implements OnInit, AfterViewInit {
     let newlineX3 = this.drawLineX3();
     let newlineY1 = this.drawLineY1();
     let newlineY2 = this.drawLineY2();
+    let newExtrudeY1 = this.extrudeshape1();
+    let newExtrudeY2 = this.extrudeshape2();
+    let newExtrudeY3 = this.extrudeshape3();
+    let newExtrudeY4 = this.extrudeshape4();
+    // let newExtrudeY3 = new Extrude();
+
     // this.linesnew();
     // let newlinetest = this.linesnew();
     cube1.position.set(2, 0, 0);
-    this.scene.add(line1, line2, line3, line4, line5, line6, cube1, newlineX1, newlineX2, newlineX3, newlineY1, newlineY2)
+    this.scene.add(line1, line2, line3, line4, line5, line6, cube1, newlineX1, newlineX2, newlineX3, newlineY1, newlineY2, newExtrudeY1, newExtrudeY2, newExtrudeY3, newExtrudeY4)
     let aspectRatio = this.getAspectRatio()
     this.camera = new THREE.PerspectiveCamera(
       this.fieldOfView,
@@ -293,10 +400,11 @@ export class LineComponent implements OnInit, AfterViewInit {
     return cube1;
 
   }
+  
   private getAspectRatio() {
     return this.canvas.clientWidth / this.canvas.clientHeight;
   }
-   
+
   // private animatecube() {
   //   this.cube.rotation.x += this.rotationSpeedX;
   //   this.cube.rotation.y += this.rotationSpeedY;
@@ -314,7 +422,7 @@ export class LineComponent implements OnInit, AfterViewInit {
       requestAnimationFrame(render);
       // component.animatecube();
       control.update();
-      
+
       component.renderer.render(component.scene, component.camera);
     }());
   }
