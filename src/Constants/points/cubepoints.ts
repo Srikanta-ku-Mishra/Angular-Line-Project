@@ -1,9 +1,10 @@
-export const CubePoints = [
+
+export const CubePoints  = [
     {
-        points:{
-            x: 4,
-            y: 4,
-            z: 4
+        point:  {
+            x: 1,
+            y: 2,
+            z: 1
         }
     }
 ]

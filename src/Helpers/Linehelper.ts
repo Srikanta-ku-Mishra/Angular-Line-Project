@@ -1,4 +1,4 @@
-import { LinePoints } from 'src/Constants/points/points';
+import { LinePoints } from 'src/Constants/points/LinePoints';
 import * as THREE from 'three'
 
 export class Linehelper {
