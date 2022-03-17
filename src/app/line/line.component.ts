@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Aqua, Green, Red } from 'src/Constants/ColorConstant/ColorConstant';
 import { CubePoints } from 'src/Constants/points/CubePoints';
 import { LinePoints } from 'src/Constants/points/LinePoints';
 import * as THREE from 'three';
 import { Vector3 } from 'three';
-// import { Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 
@@ -15,10 +15,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 export class LineComponent implements OnInit, AfterViewInit {
   //#region Canvas
   private camera!: THREE.PerspectiveCamera;
-  // geometry!: THREE.BoxGeometry;
-  // material!: THREE.MeshBasicMaterial;
-  // cubepoint: number | undefined;
-
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
@@ -45,7 +41,7 @@ export class LineComponent implements OnInit, AfterViewInit {
   //#region line Method 1(By putting coordinates in the class)
   private line1() {
     // const controls = new OrbitControls(this.camera , this.renderer.domElement)
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points: THREE.Vector3[] = [];
     points[0] = new THREE.Vector3(-0.5, 0, 0)
     points[1] = new THREE.Vector3(0.5, 0, 0)
@@ -54,7 +50,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     return line;
   }
   private line2() {
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points1: THREE.Vector3[] = [];
     points1[0] = new THREE.Vector3(-0.5, 0.25, 0)
     points1[1] = new THREE.Vector3(0.5, 0.25, 0)
@@ -63,7 +59,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     return line;
   }
   private line3() {
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points1: THREE.Vector3[] = [];
     points1[0] = new THREE.Vector3(-0.5, 0.5, 0)
     points1[1] = new THREE.Vector3(0.5, 0.5, 0)
@@ -72,7 +68,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     return line;
   }
   private line4() {
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points1: THREE.Vector3[] = [];
     points1[0] = new THREE.Vector3(-0.5, 0.75, 0)
     points1[1] = new THREE.Vector3(0.5, 0.75, 0)
@@ -81,7 +77,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     return line;
   }
   private line5() {
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points1: THREE.Vector3[] = [];
     points1[0] = new THREE.Vector3(-0.2, -0.2, 0)
     points1[1] = new THREE.Vector3(-0.2, 0.95, 0)
@@ -90,7 +86,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     return line;
   }
   private line6() {
-    const linematerial = new THREE.LineBasicMaterial({ color: 0x00ff00 })
+    const linematerial = new THREE.LineBasicMaterial({ color: Green })
     const points1: THREE.Vector3[] = [];
     points1[0] = new THREE.Vector3(0.2, -0.2, 0)
     points1[1] = new THREE.Vector3(0.2, 0.95, 0)
@@ -116,7 +112,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     lpoint.push(new THREE.Vector3(new2[0], new2[1], new2[2]));
     lpoint.push(new THREE.Vector3(new2[3], new2[4], new2[5]));
     // console.log(lpoint);
-    const linematerial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const linematerial = new THREE.MeshBasicMaterial({ color: Red })
     const linegeometry = new THREE.BufferGeometry().setFromPoints(lpoint)
     const line = new THREE.Line(linegeometry, linematerial);
     return line;
@@ -135,7 +131,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     lpoint.push(new THREE.Vector3(new2[0], new2[1], new2[2]));
     lpoint.push(new THREE.Vector3(new2[3], new2[4], new2[5]));
     // console.log(lpoint);
-    const linematerial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const linematerial = new THREE.MeshBasicMaterial({ color: Red })
     const linegeometry = new THREE.BufferGeometry().setFromPoints(lpoint)
     const line = new THREE.Line(linegeometry, linematerial);
     return line;
@@ -154,7 +150,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     lpoint.push(new THREE.Vector3(new2[0], new2[1], new2[2]));
     lpoint.push(new THREE.Vector3(new2[3], new2[4], new2[5]));
     // console.log(lpoint);
-    const linematerial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const linematerial = new THREE.MeshBasicMaterial({ color: Red })
     const linegeometry = new THREE.BufferGeometry().setFromPoints(lpoint)
     const line = new THREE.Line(linegeometry, linematerial);
     return line;
@@ -173,7 +169,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     lpoint.push(new THREE.Vector3(new2[0], new2[1], new2[2]));
     lpoint.push(new THREE.Vector3(new2[3], new2[4], new2[5]));
     // console.log(lpoint);
-    const linematerial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const linematerial = new THREE.MeshBasicMaterial({ color: Red })
     const linegeometry = new THREE.BufferGeometry().setFromPoints(lpoint)
     const line = new THREE.Line(linegeometry, linematerial);
     return line;
@@ -192,7 +188,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     lpoint.push(new THREE.Vector3(new2[0], new2[1], new2[2]));
     lpoint.push(new THREE.Vector3(new2[3], new2[4], new2[5]));
     // console.log(lpoint);
-    const linematerial = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const linematerial = new THREE.MeshBasicMaterial({ color: Red })
     const linegeometry = new THREE.BufferGeometry().setFromPoints(lpoint)
     const line = new THREE.Line(linegeometry, linematerial);
     return line;
@@ -211,7 +207,7 @@ export class LineComponent implements OnInit, AfterViewInit {
     });
     console.log(new1);
     console.log(new1[0], new1[1], new1[2])
-    const cubematerial = new THREE.MeshNormalMaterial({ wireframe: true })
+    const cubematerial = new THREE.MeshBasicMaterial({ wireframe: true, color: Aqua })
     const cubegeometry = new THREE.BoxGeometry(new1[0], new1[1], new1[2]);
     const cube = new THREE.Mesh(cubegeometry, cubematerial);
     return cube;
@@ -294,12 +290,13 @@ export class LineComponent implements OnInit, AfterViewInit {
       this.farClippingPlane
     )
     this.camera.position.z = this.cameraZ;
-    //  console.log(this.points)
+    return cube1;
+
   }
   private getAspectRatio() {
     return this.canvas.clientWidth / this.canvas.clientHeight;
   }
-
+   
   // private animatecube() {
   //   this.cube.rotation.x += this.rotationSpeedX;
   //   this.cube.rotation.y += this.rotationSpeedY;
@@ -317,6 +314,7 @@ export class LineComponent implements OnInit, AfterViewInit {
       requestAnimationFrame(render);
       // component.animatecube();
       control.update();
+      
       component.renderer.render(component.scene, component.camera);
     }());
   }
